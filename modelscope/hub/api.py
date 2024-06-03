@@ -339,7 +339,7 @@ class HubApi:
         try:
             repo = Repository(model_dir=tmp_dir, clone_from=model_id)
             branches = git_wrapper.get_remote_branches(tmp_dir)
-            if revision not in branches:
+            if revision not in branches[0]:
                 logger.info('Create new branch %s' % revision)
                 git_wrapper.new_branch(tmp_dir, revision)
             git_wrapper.checkout(tmp_dir, revision)
